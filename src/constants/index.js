@@ -1,4 +1,4 @@
 export const ctx = {
-  url: "http://foodexx.herokuapp.com/",
-  baseUrl: "http://foodexx.herokuapp.com/api/admin",
+  url: "https://foodex-api.herokuapp.com/",
+  baseUrl: "https://foodex-api.herokuapp.com/api/admin",
 };
