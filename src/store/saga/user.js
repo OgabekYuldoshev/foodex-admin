@@ -1,6 +1,6 @@
 import { call, put, takeEvery } from "redux-saga/effects";
 import * as ctx from "../constants/user";
-import { userAPI } from "../api/user";
+import { userAPI } from "../api";
 import { toast } from "react-toastify";
 
 function* initializeApp() {
@@ -37,6 +37,9 @@ function* logIn({ payload }) {
     toast.success("Logged In Successfully !!!");
   } catch (error) {
     toast.error(error);
+    yield put({
+      type: ctx.LOG_IN.FAILURE,
+    });
   }
 }
 

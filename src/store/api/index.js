@@ -12,3 +12,14 @@ export const userAPI = {
     }),
   login: (data) => axios.post(`${ctx.baseUrl}/login`, data),
 };
+
+export const dellersAPI = {
+  getDeller: (token) =>
+    axios.get(`${ctx.baseUrl}/dellers/get`, {
+      headers: {
+        common: {
+          Authorization: `Bearer ${token}`,
+        },
+      },
+    }),
+};

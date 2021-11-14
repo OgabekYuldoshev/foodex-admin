@@ -1,5 +1,5 @@
 import Dashboard from "views/Dashboard.js";
-import Icons from "views/Icons.js";
+import Dellers from "views/Dellers.js";
 import Login from "views/Login.js";
 import Notifications from "views/Notifications.js";
 import TableList from "views/TableList.js";
@@ -21,10 +21,10 @@ var routes = [
     layout: "/auth",
   },
   {
-    path: "/icons",
-    name: "Icons",
-    icon: "tim-icons icon-atom",
-    component: Icons,
+    path: "/dellers",
+    name: "Dellers",
+    icon: "tim-icons icon-single-02",
+    component: Dellers,
     layout: "/admin",
   },
   {

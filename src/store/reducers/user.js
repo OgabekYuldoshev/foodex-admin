@@ -35,7 +35,6 @@ const userReducer = (state = userState, action) => {
       return {
         ...state,
         loading: false,
-        error: "erro",
       };
     }
     case ctx.LOG_OUT.SUCCESS: {

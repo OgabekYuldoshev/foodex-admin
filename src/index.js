@@ -36,8 +36,6 @@ ReactDOM.render(
           <AuthRoute
             type="private"
             path="/admin"
-            to="/"
-            from="/admin/dashboard"
             render={(props) => <AdminLayout {...props} />}
           />
           <AuthRoute
