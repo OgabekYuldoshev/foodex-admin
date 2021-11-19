@@ -1,9 +1,13 @@
 import Dashboard from "views/Dashboard.js";
 import Dellers from "views/Dellers.js";
+import Icons from "views/Icons.js";
+
 import Login from "views/Login.js";
 import Notifications from "views/Notifications.js";
 import TableList from "views/TableList.js";
 import UserProfile from "views/UserProfile.js";
+import Orders from "views/Orders.js";
+
 
 var routes = [
   {
@@ -23,8 +27,22 @@ var routes = [
   {
     path: "/dellers",
     name: "Dellers",
-    icon: "tim-icons icon-single-02",
+    icon: "tim-icons icon-badge",
     component: Dellers,
+    layout: "/admin",
+  },
+  {
+    path: "/orders",
+    name: "Orders",
+    icon: "tim-icons icon-bullet-list-67",
+    component: Orders,
+    layout: "/admin",
+  },
+  {
+    path: "/icons",
+    name: "Icons",
+    icon: "tim-icons icon-single-02",
+    component: Icons,
     layout: "/admin",
   },
   {

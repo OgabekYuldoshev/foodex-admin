@@ -23,3 +23,15 @@ export const dellersAPI = {
       },
     }),
 };
+
+export const ordersAPI = {
+  getOrder: (token) =>
+    axios.get(`${ctx.baseUrl}/orders/get`, {
+      headers: {
+        common: {
+          Authorization: `Bearer ${token}`,
+        },
+      },
+    }),
+};
+

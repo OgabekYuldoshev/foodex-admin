@@ -8,6 +8,7 @@ import AuthRoute from "./middleware/AuthRoute";
 
 import AdminLayout from "layouts/Admin/Admin.js";
 import AuthLayout from "layouts/Auth/Auth.js";
+import Error from "views/404";
 
 import "assets/scss/black-dashboard-react.scss";
 import "assets/demo/demo.css";
@@ -43,6 +44,8 @@ ReactDOM.render(
             path="/auth"
             render={(props) => <AuthLayout {...props} />}
           />
+          <Redirect from="/" to="/admin/dashboard" />
+          <Route component={Error} />
         </Switch>
       </BrowserRouter>
     </BackgroundColorWrapper>
