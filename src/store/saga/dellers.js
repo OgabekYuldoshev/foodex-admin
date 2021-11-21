@@ -17,6 +17,27 @@ function* getDellers({ payload }) {
     });
   }
 }
+
+function* deleteDeller({ payload }) {
+  try {
+    let res = yield call(dellersAPI.deleteDeller, payload);
+    toast.success(res.data);
+  } catch (error) {
+    toast.error(error);
+  }
+}
+
+function* updateAccess({ payload }) {
+  try {
+    let res = yield call(dellersAPI.updateAccess, payload);
+    console.log(payload)
+    toast.success(res.data);
+  } catch (error) {
+    toast.error(error);
+  }
+}
 export default function* dellers() {
   yield takeEvery(ctx.DELLERS_INFO.REQUEST, getDellers);
+  yield takeEvery(ctx.DELETE_DELLER.REQUEST, deleteDeller);
+  yield takeEvery(ctx.UPDATE_ACCESS.REQUEST, updateAccess);
 }

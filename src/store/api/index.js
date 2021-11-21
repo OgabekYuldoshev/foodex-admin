@@ -22,6 +22,24 @@ export const dellersAPI = {
         },
       },
     }),
+
+  deleteDeller: ({ token, id }) =>
+    axios.delete(`${ctx.baseUrl}/dellers/delete?id=${id}`, {
+      headers: {
+        common: {
+          Authorization: `Bearer ${token}`,
+        },
+      },
+    }),
+
+  updateAccess: ({ token, id }) =>
+    axios.put(`${ctx.baseUrl}/dellers/give_access?id=${id}`, {
+      headers: {
+        common: {
+          Authorization: `Bearer ${token}`,
+        },
+      },
+    }),
 };
 
 export const ordersAPI = {
@@ -34,4 +52,3 @@ export const ordersAPI = {
       },
     }),
 };
-

@@ -15,15 +15,26 @@ import {
   Badge,
   CardSubtitle,
 } from "reactstrap";
-import { getDellers } from "store/actions/dellers";
+import { getDellers, deleteDeller, updateAccess } from "store/actions/dellers";
 import Loader from "react-loader-spinner";
 
-const Dellers = ({ getDellers, token, dellers, loading }) => {
+const Dellers = ({ getDellers, token, dellers, loading, deleteD, updateA }) => {
   const [modal, setModal] = useState(false);
 
   useEffect(() => {
     getDellers(token);
   }, []);
+
+  const deleteDeller = (id) => {
+    deleteD({ token, id });
+    getDellers(token);
+  };
+
+  const updateAccess = (id) => {
+    alert(token);
+    updateA({ token, id });
+    getDellers(token);
+  };
 
   return (
     <>
@@ -41,7 +52,7 @@ const Dellers = ({ getDellers, token, dellers, loading }) => {
           </div>
         ) : (
           <Row xs="3">
-            {dellers &&
+            {dellers && dellers.length != 0 ? (
               dellers.map((deller, i) => (
                 <Col key={i}>
                   <Card>
@@ -91,14 +102,14 @@ const Dellers = ({ getDellers, token, dellers, loading }) => {
                         <Button
                           size="sm"
                           color={deller.access ? "warning" : "success"}
-                          onClick={() => setModal(false)}
+                          onClick={() => updateAccess(deller._id)}
                         >
                           {deller.access ? "Unaccess" : "Access"}
                         </Button>
                         <Button
                           size="sm"
                           color="danger"
-                          onClick={() => setModal(false)}
+                          onClick={() => deleteDeller(deller._id)}
                         >
                           Delete
                         </Button>
@@ -106,7 +117,10 @@ const Dellers = ({ getDellers, token, dellers, loading }) => {
                     </CardBody>
                   </Card>
                 </Col>
-              ))}
+              ))
+            ) : (
+              <span>No Data</span>
+            )}
           </Row>
         )}
       </div>
@@ -122,6 +136,8 @@ const mapToState = ({ user, dellers }) => ({
 
 const mapToDispatch = (dispatch) => ({
   getDellers: (token) => dispatch(getDellers(token)),
+  deleteD: ({ token, id }) => dispatch(deleteDeller({ token, id })),
+  updateA: ({ token, id }) => dispatch(updateAccess({ token, id })),
 });
 
 export default connect(mapToState, mapToDispatch)(Dellers);

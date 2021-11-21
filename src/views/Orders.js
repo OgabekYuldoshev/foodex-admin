@@ -56,7 +56,7 @@ const Orders = ({ token, loading, getOrders, orders }) => {
                     </thead>
 
                     <tbody>
-                      {orders &&
+                      {orders && orders.length ? (
                         orders.map((order) => (
                           <tr>
                             <td>{order._id}</td>
@@ -77,7 +77,10 @@ const Orders = ({ token, loading, getOrders, orders }) => {
                               {ctx.normalizer(order.total)} sum
                             </td>
                           </tr>
-                        ))}
+                        ))
+                      ) : (
+                        <span>No Data</span>
+                      )}
                     </tbody>
                   </Table>
                 )}
