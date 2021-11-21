@@ -9,7 +9,7 @@ import {
   CardBody,
   Table,
   CardTitle,
-  Badge
+  Badge,
 } from "reactstrap";
 import { ctx } from "constants/index";
 import Loader from "react-loader-spinner";
@@ -23,25 +23,25 @@ const Orders = ({ token, loading, getOrders, orders }) => {
   return (
     <>
       <div className="content">
-        {loading ? (
-          <div
-            style={{
-              width: "100%",
-              marginTop: "10px",
-              display: "flex",
-              justifyContent: "center",
-            }}
-          >
-            <Loader type="TailSpin" color="#00BFFF" />
-          </div>
-        ) : (
-          <Row>
-            <Col md="12">
-              <Card>
-                <CardHeader>
-                  <CardTitle tag="h4">Orders</CardTitle>
-                </CardHeader>
-                <CardBody>
+        <Row>
+          <Col md="12">
+            <Card>
+              <CardHeader>
+                <CardTitle tag="h4">Orders</CardTitle>
+              </CardHeader>
+              <CardBody>
+                {loading ? (
+                  <div
+                    style={{
+                      width: "100%",
+                      marginTop: "10px",
+                      display: "flex",
+                      justifyContent: "center",
+                    }}
+                  >
+                    <Loader type="TailSpin" color="#00BFFF" />
+                  </div>
+                ) : (
                   <Table className="tablesorter" responsive>
                     <thead className="text-primary">
                       <tr>
@@ -54,6 +54,7 @@ const Orders = ({ token, loading, getOrders, orders }) => {
                         <th className="text-center">Price</th>
                       </tr>
                     </thead>
+
                     <tbody>
                       {orders &&
                         orders.map((order) => (
@@ -79,11 +80,11 @@ const Orders = ({ token, loading, getOrders, orders }) => {
                         ))}
                     </tbody>
                   </Table>
-                </CardBody>
-              </Card>
-            </Col>
-          </Row>
-        )}
+                )}
+              </CardBody>
+            </Card>
+          </Col>
+        </Row>
       </div>
     </>
   );

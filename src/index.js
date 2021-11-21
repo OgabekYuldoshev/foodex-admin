@@ -19,36 +19,38 @@ import "react-toastify/dist/ReactToastify.css";
 import BackgroundColorWrapper from "./components/BackgroundColorWrapper/BackgroundColorWrapper";
 
 ReactDOM.render(
-  <Provider store={store}>
-    <BackgroundColorWrapper>
-      <ToastContainer
-        position="top-center"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover={false}
-      />
-      <BrowserRouter>
-        <Switch>
-          <AuthRoute
-            type="private"
-            path="/admin"
-            render={(props) => <AdminLayout {...props} />}
-          />
-          <AuthRoute
-            type="new"
-            path="/auth"
-            render={(props) => <AuthLayout {...props} />}
-          />
-          <Redirect from="/" to="/admin/dashboard" />
-          <Route component={Error} />
-        </Switch>
-      </BrowserRouter>
-    </BackgroundColorWrapper>
-  </Provider>,
+  <React.StrictMode>
+    <Provider store={store}>
+      <BackgroundColorWrapper>
+        <ToastContainer
+          position="top-center"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover={false}
+        />
+        <BrowserRouter>
+          <Switch>
+            <AuthRoute
+              type="private"
+              path="/admin"
+              render={(props) => <AdminLayout {...props} />}
+            />
+            <AuthRoute
+              type="new"
+              path="/auth"
+              render={(props) => <AuthLayout {...props} />}
+            />
+            <Redirect from="/" to="/admin/dashboard" />
+            <Route component={Error} />
+          </Switch>
+        </BrowserRouter>
+      </BackgroundColorWrapper>
+    </Provider>
+  </React.StrictMode>,
   document.getElementById("root")
 );
